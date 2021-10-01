@@ -6,9 +6,11 @@ if (event.origin === window.origin) {
     case "decode":
       let result = atob(event.data.content);
       window.parent.postMessage({type: "decoded", payload: result}, window.origin);
+      break
     case "encode":
       let result = btoa(event.data.content);
       window.parent.postMessage({type: "encoded", payload: result}, window.origin);
+      break
   }
 }
 });
