@@ -4,6 +4,7 @@
 if (window.top === window && window.parent === window) {
     let API = document.getElementById("API");
     API.addEventListener("message", event => {
+      if (event.origin !== window.origin) return
       switch(event.data.type) {
         case "decoded":
           console.info(event.payload);
