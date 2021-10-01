@@ -9,7 +9,7 @@ if (true) {
         case "decoded":
           console.info(event.data.content);
           if (event.data.content.startsWith("ERROR")) {
-            document.body.innerHTML = "<p>"+event.content+"</p>";
+            document.body.innerHTML = "<p>"+event.data.content+"</p>";
           }
           break
         case "encoded":
