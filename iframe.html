@@ -4,11 +4,11 @@ window.addEventListener("message", event => {
 if (event.origin === window.origin) {
   switch(event.data.type) {
     case "decode":
-      let result = atob(event.data.content);
+      let result1 = atob(event.data.content);
       window.parent.postMessage({type: "decoded", payload: result}, window.origin);
       break
     case "encode":
-      let result = btoa(event.data.content);
+      let result2 = btoa(event.data.content);
       window.parent.postMessage({type: "encoded", payload: result}, window.origin);
       break
   }
