@@ -1,0 +1,29 @@
+<!--Should be diffrent origin -->
+<iframe id="API" src="iframe.html"></iframe>
+<script>
+"use strict";
+  
+  
+
+  
+  
+
+if (window.top === window && window.parent === window) {
+    let API = document.getElementById("API");
+    API.addEventListener("message", event => {
+      switch(event.data.type) {
+        case "decoded":
+          console.info(event.payload);
+          if (event.payload.startsWith("ERROR")) {
+            document.body.innerHTML = "<p>"+event.payload+"</p>";
+          }
+          break
+        case "encoded":
+          console.info(event.payload);
+          break
+      }
+    });
+    let message = new URL(location.href).searchParams.get("message");
+    document.getElementsByTagName("iframe")[0].contentWindow.postMessage(message, window.origin);
+}
+</script>
