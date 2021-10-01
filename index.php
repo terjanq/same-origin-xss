@@ -73,11 +73,17 @@ if(!isset($_SESSION['id'])) {
         </div>
         
         <script>
+            let pastContent = localStorage.getItem("html");
+            if (pastContent !== null) {
+		textarea.value = pastContent;
+            }
+
             textarea.onchange = textarea.oninput = () => {
-                const dirty = textarea.value;
+		const dirty = textarea.value;
 		const isEmpty = (dirty.length === 0);
 		saveButton.disabled = isEmpty;
 		shareButton.disabled = isEmpty;
+		localStorage.setItem("html", dirty);
                 const clean = DOMPurify.sanitize(dirty);
                 iframe.contentWindow.postMessage({
                     identifier,
@@ -101,7 +107,7 @@ if(!isset($_SESSION['id'])) {
                 textarea.value = text;
             }
 
-	    function share() {
+            function share() {
                 navigator.share({text: textarea.value})
 	    }
         </script>
