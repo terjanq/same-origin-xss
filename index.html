@@ -1,7 +1,7 @@
 <iframe id="API" src="iframe.html" sandbox="allow-scripts"></iframe>
 <script>
 "use strict";
-if (true) {
+if (window.top !== window) {
     let API = document.getElementById("API");
     window.addEventListener("message", event => {
       if (API.contentWindow !== event.source) return
