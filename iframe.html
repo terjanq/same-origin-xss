@@ -5,11 +5,11 @@ if (event.origin === window.origin) {
   switch(event.data.type) {
     case "decode":
       let decoded = atob(event.data.content);
-      window.parent.postMessage({type: "decoded", content: decoded});
+      window.parent.postMessage({type: "decoded", content: decoded}, "*");
       break
     case "encode":
       let encoded = btoa(event.data.content);
-      window.parent.postMessage({type: "encoded", content: encoded});
+      window.parent.postMessage({type: "encoded", content: encoded}, "*");
       break
   }
 }
