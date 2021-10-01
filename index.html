@@ -4,7 +4,7 @@
 if (true) {
     let API = document.getElementById("API");
     window.addEventListener("message", event => {
-      if (event.origin !== window.origin || API.contentWindow !== event.source) return
+      if (API.contentWindow !== event.source) return
       switch(event.data.type) {
         case "decoded":
           console.info(event.data.content);
