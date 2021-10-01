@@ -40,6 +40,12 @@ if(!isset($_SESSION['id'])) {
                  width: 100%;
                  height: 100%;
              }
+	     @media (prefers-color-scheme: dark) {
+	         body {
+		    color: #eee;
+		    background: #121212;
+	         }
+	     }
          </style>
     </head>
     <body>
@@ -50,7 +56,7 @@ if(!isset($_SESSION['id'])) {
                 <textarea id="textarea"></textarea>
             </div>
             <div class="column">
-                <h2>Rendered page</h2><br>
+                <h2>Rendered page</h2>
                 <iframe id="iframe" src="/iframe.php"></iframe>
             </div>
             <div class="column">
