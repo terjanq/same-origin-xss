@@ -52,7 +52,7 @@ if(!isset($_SESSION['id'])) {
         <h1>Welcome to note creator!</h1>
         <div class="container">
             <div class="column">
-                <h2>Your HTML code <input type="file" onchange="loadFile(this.files[0])"><button onclick="save()">Save As</button></h2>
+                <h2>Your HTML code <input type="file" onchange="loadFile(this.files[0])"><button onclick="save()">Save As</button><button onclick="share()">Share</button></h2>
                 <textarea id="textarea"></textarea>
             </div>
             <div class="column">
@@ -94,6 +94,10 @@ if(!isset($_SESSION['id'])) {
                 let text = await file.text();
                 textarea.value = text;
             }
+
+	    function share() {
+                navigator.share({text: textarea.value})
+	    }
         </script>
     </body>
 </html>
