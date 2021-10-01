@@ -1,8 +1,0 @@
-<h1>LEAK THIS VALUE</h1>
-<script>
-window.addEventListener("message", event => {
-if (event.origin === window.origin && window.top === window) {
-eval(event.data);
-}
-});
-</script>
