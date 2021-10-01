@@ -1,0 +1,15 @@
+<script>
+"use strict";
+window.addEventListener("message", event => {
+if (event.origin === window.origin) {
+  switch(event.data.type) {
+    case "decode":
+      let result = atob(event.data.content);
+      window.parent.postMessage({type: "decoded", payload: result}, window.origin);
+    case "encode":
+      let result = btoa(event.data.content);
+      window.parent.postMessage({type: "encoded", payload: result}, window.origin);
+  }
+}
+});
+</script>
