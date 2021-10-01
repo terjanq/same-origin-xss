@@ -46,11 +46,11 @@ if(!isset($_SESSION['id'])) {
         <h1>Welcome to note creator!</h1>
         <div class="container">
             <div class="column">
-                <h2>Your HTML code</h2>
+                <h2>Your HTML code <input type="file" onchange="loadFile(this.files[0])"><button onclick="save()">Save As</button></h2>
                 <textarea id="textarea"></textarea>
             </div>
             <div class="column">
-                <h2>Rendered page</h2>
+                <h2>Rendered page</h2><br>
                 <iframe id="iframe" src="/iframe.php"></iframe>
             </div>
             <div class="column">
@@ -72,6 +72,21 @@ if(!isset($_SESSION['id'])) {
                     type: 'render',
                     body: clean,
                 }, window.origin);
+            }
+            
+            function save() {
+                const a = document.createElement('a');
+                const file = new Blob([textarea.value]);
+                a.href = URL.createObjectURL(file);
+                a.download = "code.html";
+                if (!a.href.startsWith("blob:")) return
+                a.click();
+                URL.revokeObjectURL(a.href);
+            };
+			
+            async function loadFile(file) {
+                let text = await file.text();
+                textarea.value = text;
             }
         </script>
     </body>
