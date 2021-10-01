@@ -17,7 +17,5 @@ if (window.top === window && window.parent === window) {
           break
       }
     });
-    let message = new URL(location.href).searchParams.get("message");
-    document.getElementsByTagName("iframe")[0].contentWindow.postMessage(message, window.origin);
 }
 </script>
