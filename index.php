@@ -73,16 +73,21 @@ if(!isset($_SESSION['id'])) {
         </div>
         
         <script>
+            function disableMenu(value) {
+		saveButton.disabled = value;
+		shareButton.disabled = value;
+            }
+
             let pastContent = localStorage.getItem("html");
             if (pastContent !== null) {
 		textarea.value = pastContent;
+		disableMenu(true);
             }
 
             textarea.onchange = textarea.oninput = () => {
 		const dirty = textarea.value;
 		const isEmpty = (dirty.length === 0);
-		saveButton.disabled = isEmpty;
-		shareButton.disabled = isEmpty;
+		disableMenu(isEmpty);
 		localStorage.setItem("html", dirty);
                 const clean = DOMPurify.sanitize(dirty);
                 iframe.contentWindow.postMessage({
