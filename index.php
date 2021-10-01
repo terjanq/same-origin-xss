@@ -46,6 +46,9 @@ if(!isset($_SESSION['id'])) {
 		    background: #121212;
 	         }
 	     }
+	     #textarea {
+	         resize: none;
+	     }
          </style>
     </head>
     <body>
