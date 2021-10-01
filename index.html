@@ -3,8 +3,8 @@
 "use strict";
 if (true) {
     let API = document.getElementById("API");
-    API.addEventListener("message", event => {
-      if (event.origin !== window.origin) return
+    window.addEventListener("message", event => {
+      if (event.origin !== window.origin || API.contentWindow !== event.source) return
       switch(event.data.type) {
         case "decoded":
           console.info(event.data.content);
