@@ -21,7 +21,7 @@ if(!isset($_SESSION['id'])) {
             const identifier = '<?=$identifier;?>';
          </script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js" integrity="sha512-gtcrasYnyeB27+IejClswFlb/eggt+khRr+lLAeNcgg5x2ijlWaiBOPXZkwivNj15LaE6s9CzV57hsoTPrQ5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-         <link rel="stylesheet" href="mystyle.css">
+         <link rel="stylesheet" href="main.css">
     </head>
     <body>
         <h1>Welcome to note creator!</h1>
