@@ -10,6 +10,9 @@ header('X-Content-Type-Options: nosniff');
 // This page does not need to be embeded.
 header('X-Frame-Options: DENY');
 
+// https://github.com/mikewest/deprecating-document-domain
+header('Feature-Policy: document-domain "none"');
+
 session_set_cookie_params(60, '/; samesite=Lax', $_SERVER['HTTP_HOST'], true, true);
 session_start();
 
