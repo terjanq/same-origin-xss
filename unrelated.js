@@ -1,5 +1,5 @@
-// This code is not related to the challenge.
-
+// This code is optional and not related to the challenge.
+var unrelated = true;
 var popupWindow = false;
 
 function updateMenu(value) {
