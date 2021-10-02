@@ -82,7 +82,7 @@ if(!isset($_SESSION['id'])) {
             let pastContent = localStorage.getItem("html");
             if (pastContent !== null) {
 		textarea.value = pastContent;
-		disableMenu(true);
+		disableMenu(false);
             }
 
             textarea.onchange = textarea.oninput = () => {
