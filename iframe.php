@@ -9,6 +9,9 @@ header('Vary: Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site, Sec-Fetch-User');
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
 
+// https://github.com/mikewest/deprecating-document-domain
+header('Feature-Policy: document-domain "none"');
+
 session_set_cookie_params(60, '/; samesite=Lax', $_SERVER['HTTP_HOST'], true, true);
 session_start();
 
