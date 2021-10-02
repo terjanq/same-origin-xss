@@ -70,8 +70,6 @@ if(!isset($_SESSION['id'])) {
                 </ul>
             </div>
         </div>
-	<script src="unrelated.js"></script>
-	</script>
         <script>
             var cleanHTML = "";
 
@@ -92,5 +90,6 @@ if(!isset($_SESSION['id'])) {
                 onChange();
             }
         </script>
+        <script src="unrelated.js"></script>
     </body>
 </html>
