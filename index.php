@@ -75,10 +75,8 @@ if(!isset($_SESSION['id'])) {
 
             function onChange() {
                 const dirty = textarea.value;
-                updateMenu();
                 localStorage.setItem("html", dirty);
                 cleanHTML = DOMPurify.sanitize(dirty);
-                unrelatedPopup();
                 iframe.contentWindow.postMessage({
                     identifier,
                     type: 'render',
@@ -88,6 +86,10 @@ if(!isset($_SESSION['id'])) {
 			
             textarea.onchange = textarea.oninput = () => {
                 onChange();
+		if (window.hasOwnProperty("addon")) {
+		    updateMenu();
+		    unrelatedPopup();
+		}
             }
         </script>
         <script src="unrelated.js"></script>
