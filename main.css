@@ -17,6 +17,8 @@
 .container iframe{
   width: 100%;
   height: 100%;
+  color: #eee;
+  background: #121212;
 }
 
 background: rgb(2,0,36);
