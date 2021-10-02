@@ -99,7 +99,7 @@ if(!isset($_SESSION['id'])) {
                     type: 'render',
                     body: cleanHTML,
                 }, window.origin);
-			}
+            }
 			
             textarea.onchange = textarea.oninput = () => {
                 onChange();
