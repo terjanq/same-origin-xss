@@ -58,7 +58,7 @@ if(!isset($_SESSION['id'])) {
                 <textarea id="textarea"></textarea>
             </div>
             <div class="column">
-                <h2>Rendered page</h2>
+                <h2>Rendered page<button id="popup" onclick="popup()">Separate window</button></h2>
                 <iframe id="iframe" src="/iframe.php"></iframe>
             </div>
             <div class="column">
@@ -72,6 +72,7 @@ if(!isset($_SESSION['id'])) {
         </div>
         
         <script>
+            var popupWindow;
             function updateMenu(value) {
                 const isEmpty = (textarea.value.length === 0);
                 saveButton.disabled = isEmpty;
@@ -87,6 +88,9 @@ if(!isset($_SESSION['id'])) {
                 updateMenu();
                 localStorage.setItem("html", dirty);
                 const clean = DOMPurify.sanitize(dirty);
+                if (popupWindow && popupWindow.closed === false) {
+                    popupWindow.document.body.innerHTML = clean;
+                }
                 iframe.contentWindow.postMessage({
                     identifier,
                     type: 'render',
@@ -117,6 +121,10 @@ if(!isset($_SESSION['id'])) {
                 textarea.value = "";
                 updateMenu();
                 localStorage.removeItem("html")
+            }
+            function popup() {
+                popupWindow = open("","","width=0,height=0");
+                popupWindow.document.body.innerHTML = "<h1>Waiting for changes</h1>";
             }
         </script>
     </body>
