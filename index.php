@@ -21,34 +21,7 @@ if(!isset($_SESSION['id'])) {
             const identifier = '<?=$identifier;?>';
          </script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js" integrity="sha512-gtcrasYnyeB27+IejClswFlb/eggt+khRr+lLAeNcgg5x2ijlWaiBOPXZkwivNj15LaE6s9CzV57hsoTPrQ5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-         <style>
-             .container {
-                 width: 90vw;
-                 height: 80vh;
-                 padding: 0;
-                 margin: 0;
-                 display: inline-block;
-             }
-             .container .column{
-                 width: 30vw;
-                 float: left;
-             }
-             .container textarea{
-                 width: 100%;
-                 height: 100%;
-                 resize: none;
-             }
-             .container iframe{
-                 width: 100%;
-                 height: 100%;
-             }
-             @media (prefers-color-scheme: dark){
-                 body {
-		    color: #eee;
-		    background: #121212;
-                 }
-	     }
-         </style>
+         <link rel="stylesheet" href="mystyle.css">
     </head>
     <body>
         <h1>Welcome to note creator!</h1>
