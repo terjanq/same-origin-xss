@@ -36,19 +36,17 @@ if(!isset($_SESSION['id'])) {
              .container textarea{
                  width: 100%;
                  height: 100%;
+                 resize: none;
              }
              .container iframe{
                  width: 100%;
                  height: 100%;
              }
-	     @media (prefers-color-scheme: dark) {
-	         body {
+             @media (prefers-color-scheme: dark){
+                 body {
 		    color: #eee;
 		    background: #121212;
-	         }
-	     }
-	     #textarea {
-	         resize: none;
+                 }
 	     }
          </style>
     </head>
