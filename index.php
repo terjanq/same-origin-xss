@@ -28,7 +28,7 @@ if(!isset($_SESSION['id'])) {
         <div class="container">
             <div class="column">
                 <h2>Your HTML code <input type="file" onchange="loadFile(this.files[0])"><button id="saveButton" disabled onclick="save()">Save</button><button id="shareButton" disabled onclick="share()">Share</button><button id="clearButton" disabled onclick="remove()">Clear</button></h2>
-                <textarea id="textarea"></textarea>
+                <textarea id="textarea" spellcheck="false"></textarea>
             </div>
             <div class="column">
                 <h2>Rendered page <button id="popup" onclick="popup()" disabled>Separate window</button></h2>
