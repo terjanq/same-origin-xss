@@ -72,7 +72,7 @@ if(!isset($_SESSION['id'])) {
         </div>
         
         <script>
-            var popupWindow;
+            var popupWindow = false;
             function updateMenu(value) {
                 const isEmpty = (textarea.value.length === 0);
                 saveButton.disabled = isEmpty;
@@ -89,7 +89,11 @@ if(!isset($_SESSION['id'])) {
                 localStorage.setItem("html", dirty);
                 const clean = DOMPurify.sanitize(dirty);
                 if (popupWindow && popupWindow.closed === false) {
-                    popupWindow.document.body.innerHTML = clean;
+		    try {
+                    	popupWindow.document.body.innerHTML = clean;
+		    } catch (e) {
+                    	popupWindow = false;
+		    }
                 }
                 iframe.contentWindow.postMessage({
                     identifier,
@@ -124,7 +128,7 @@ if(!isset($_SESSION['id'])) {
             }
             function popup() {
                 popupWindow = open("","","width=0,height=0");
-		popupWindow.document.title = "Notes";
+                popupWindow.document.title = "Notes";
                 popupWindow.document.body.innerHTML = "<h1>Waiting for changes</h1>";
             }
         </script>
