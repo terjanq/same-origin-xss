@@ -4,6 +4,7 @@ isset($_GET['source']) && highlight_file(__FILE__) && die();
 
 // To protect from unrelated attacks https://w3c.github.io/webappsec-post-spectre-webdev/#dynamic-subresources
 // Excluding Cross-Origin-Opener-Policy and CSP sandbox.
+// No Cross-Origin-Embedder-Policy because iframe may need to display content that has not opted in.
 header('Cross-Origin-Resource-Policy: same-origin');
 header('Vary: Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site, Sec-Fetch-User');
 header('X-Content-Type-Options: nosniff');
