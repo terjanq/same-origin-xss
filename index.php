@@ -136,7 +136,7 @@ if(!isset($_SESSION['id'])) {
             function popup() {
                 popupWindow = open("","","width=0,height=0");
                 popupWindow.document.title = "Notes";
-				updateWindow();
+                updateWindow();
             }
             
             function updateWindow() {
