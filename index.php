@@ -74,22 +74,22 @@ if(!isset($_SESSION['id'])) {
         
         <script>
             function disableMenu(value) {
-		saveButton.disabled = value;
-		shareButton.disabled = value;
-		clearButton.disabled = value;
+                saveButton.disabled = value;
+                shareButton.disabled = value;
+                clearButton.disabled = value;
             }
 
             let pastContent = localStorage.getItem("html");
             if (pastContent !== null) {
-		textarea.value = pastContent;
-		disableMenu(false);
+                textarea.value = pastContent;
+                disableMenu(false);
             }
 
             textarea.onchange = textarea.oninput = () => {
-		const dirty = textarea.value;
-		const isEmpty = (dirty.length === 0);
-		disableMenu(isEmpty);
-		localStorage.setItem("html", dirty);
+                const dirty = textarea.value;
+                const isEmpty = (dirty.length === 0);
+                disableMenu(isEmpty);
+                localStorage.setItem("html", dirty);
                 const clean = DOMPurify.sanitize(dirty);
                 iframe.contentWindow.postMessage({
                     identifier,
@@ -115,12 +115,12 @@ if(!isset($_SESSION['id'])) {
 
             function share() {
                 navigator.share({text: textarea.value})
-	    }
+            }
 
-	    function remove() {
+            function remove() {
                 textarea.value = "";
-		disableMenu(true);
-	    }
+                disableMenu(true);
+            }
         </script>
     </body>
 </html>
