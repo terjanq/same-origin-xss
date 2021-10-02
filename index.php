@@ -70,30 +70,17 @@ if(!isset($_SESSION['id'])) {
                 </ul>
             </div>
         </div>
-        
+	<script src="unrelated.js"></script>
+	</script>
         <script>
-            var popupWindow = false;
             var cleanHTML = "";
 
-            function updateMenu(value) {
-                const isEmpty = (textarea.value.length === 0);
-                saveButton.disabled = isEmpty;
-                shareButton.disabled = isEmpty;
-                clearButton.disabled = isEmpty;
-            }
-			
             function onChange() {
                 const dirty = textarea.value;
                 updateMenu();
                 localStorage.setItem("html", dirty);
                 cleanHTML = DOMPurify.sanitize(dirty);
-                if (popupWindow && popupWindow.closed === false) {
-                    try {
-                        updateWindow();
-                    } catch (e) {
-                        popupWindow = false;
-                    }
-                }
+                unrelatedPopup();
                 iframe.contentWindow.postMessage({
                     identifier,
                     type: 'render',
@@ -103,49 +90,6 @@ if(!isset($_SESSION['id'])) {
 			
             textarea.onchange = textarea.oninput = () => {
                 onChange();
-            }
-			
-            textarea.value = localStorage.getItem("html");
-            onChange();
-			
-            function save() {
-                const a = document.createElement('a');
-                const file = new Blob([textarea.value]);
-                a.href = URL.createObjectURL(file);
-                a.download = "code.html";
-                if (!a.href.startsWith("blob:")) return
-                a.click();
-                URL.revokeObjectURL(a.href);
-            };
-			
-            async function loadFile(file) {
-                let text = await file.text();
-                textarea.value = text;
-                onChange();
-            }
-
-            function share() {
-                navigator.share({text: textarea.value});
-            }
-
-            function remove() {
-                textarea.value = "";
-                onChange();
-            }
-			
-            function popup() {
-                popupWindow = open("","","width=0,height=0");
-                updateWindow();
-            }
-            
-            function updateWindow() {
-                const isEmpty = (cleanHTML.length === 0);
-                if (isEmpty) {
-                    popupWindow.document.title = "Notes";
-                    popupWindow.document.body.innerHTML = "<h1>Waiting for changes</h1>";
-                } else {
-                    popupWindow.document.body.innerHTML = cleanHTML;
-                }
             }
         </script>
     </body>
