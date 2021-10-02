@@ -38,7 +38,9 @@ if (!isset($_SESSION['id'])) {
             <div class="row header">
                 <h2>Your HTML code</h2>
                 <div class="panel">
-                    <input type="file" onchange="loadFile(this.files[0])"><button id="saveButton" disabled onclick="save()">Save</button><button id="shareButton" disabled onclick="share()">Share</button><button id="clearButton" disabled onclick="remove()">Clear</button>
+                    <input type="file" onchange="loadFile(this.files[0])">
+                    <button id="saveButton" disabled onclick="save()">Save</button>
+                    <button id="clearButton" disabled onclick="remove()">Clear</button>
                 </div>
 
             </div>
@@ -50,7 +52,8 @@ if (!isset($_SESSION['id'])) {
             <div class="row header">
                 <h2>Rendered page </h2>
                 <div class="panel">
-                    <button id="popupButton" onclick="popup()" disabled>Separate window</button>
+                    <button id="popupButton" onclick="popup()" disabled>Open a popup</button>
+                    <button id="shareButton" disabled onclick="share()">Share</button>
                 </div>
             </div>
             <div class="row content">
