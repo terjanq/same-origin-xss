@@ -2,7 +2,7 @@
 var unrelated = true;
 var popupWindow = false;
 
-popup.disabled = false;
+popupButton.disabled = false;
 
 function updateMenu(value) {
   const isEmpty = (textarea.value.length === 0);
