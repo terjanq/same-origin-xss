@@ -31,7 +31,7 @@ if(!isset($_SESSION['id'])) {
                 <textarea id="textarea"></textarea>
             </div>
             <div class="column">
-                <h2>Rendered page <button id="popup" onclick="popup()">Separate window</button></h2>
+                <h2>Rendered page <button id="popup" onclick="popup()" disabled>Separate window</button></h2>
                 <iframe id="iframe" src="/iframe.php"></iframe>
             </div>
             <div class="column">
