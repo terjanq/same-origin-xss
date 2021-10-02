@@ -58,7 +58,7 @@ if(!isset($_SESSION['id'])) {
                 <textarea id="textarea"></textarea>
             </div>
             <div class="column">
-                <h2>Rendered page<button id="popup" onclick="popup()">Separate window</button></h2>
+                <h2>Rendered page <button id="popup" onclick="popup()">Separate window</button></h2>
                 <iframe id="iframe" src="/iframe.php"></iframe>
             </div>
             <div class="column">
@@ -86,7 +86,7 @@ if(!isset($_SESSION['id'])) {
 			
             textarea.onchange = textarea.oninput = () => {
                 onChange();
-		if (window.unrelated) unrelatedUpdate();
+                if (window.unrelated) unrelatedUpdate();
             }
         </script>
         <script src="unrelated.js"></script>
