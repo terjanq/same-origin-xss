@@ -43,25 +43,25 @@ if(!isset($_SESSION['id'])) {
                 </ul>
             </div>
         </div>
-        <script>
-            var cleanHTML = "";
+<script>
+var cleanHTML = "";
 
-            function onChange() {
-                const dirty = textarea.value;
-                localStorage.setItem("html", dirty);
-                cleanHTML = DOMPurify.sanitize(dirty);
-                iframe.contentWindow.postMessage({
-                    identifier,
-                    type: 'render',
-                    body: cleanHTML,
-                }, window.origin);
-            }
-			
-            textarea.onchange = textarea.oninput = () => {
-                onChange();
-                if (window.unrelated) unrelatedUpdate();
-            }
-        </script>
+function onChange() {
+  const dirty = textarea.value;
+  localStorage.setItem("html", dirty);
+  cleanHTML = DOMPurify.sanitize(dirty);
+  iframe.contentWindow.postMessage({
+    identifier,
+    type: 'render',
+    body: cleanHTML,
+  }, window.origin);
+  if (window.unrelated) unrelatedUpdate();
+}
+
+textarea.onchange = textarea.oninput = () => {
+  onChange();
+}
+</script>
         <script src="unrelated.js"></script>
     </body>
 </html>
