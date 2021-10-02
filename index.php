@@ -16,6 +16,7 @@ if(!isset($_SESSION['id'])) {
 ?>
 <html>
     <head>
+        <title>Notes</title>
         <script>
             const identifier = '<?=$identifier;?>';
          </script>
