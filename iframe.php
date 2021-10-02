@@ -12,6 +12,8 @@ header('X-Frame-Options: SAMEORIGIN');
 // https://github.com/mikewest/deprecating-document-domain
 header('Feature-Policy: document-domain "none"');
 
+header('Referrer-Policy: no-referrer');
+
 session_set_cookie_params(60, '/; samesite=Lax', $_SERVER['HTTP_HOST'], true, true);
 session_start();
 
