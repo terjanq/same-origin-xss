@@ -52,7 +52,7 @@ if (!isset($_SESSION['id'])) {
             <div class="row header">
                 <h2>Rendered page </h2>
                 <div class="panel">
-                    <button id="popupButton" onclick="popup()" disabled>Open a popup</button>
+                    <button id="popupButton" onclick="popup()">Open a popup</button>
                     <button id="shareButton" disabled onclick="share()">Share</button>
                 </div>
             </div>
