@@ -124,13 +124,12 @@ if(!isset($_SESSION['id'])) {
             }
 
             function share() {
-                navigator.share({text: textarea.value})
+                navigator.share({text: textarea.value});
             }
 
             function remove() {
                 textarea.value = "";
                 onChange();
-                localStorage.removeItem("html")
             }
 			
             function popup() {
