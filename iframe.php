@@ -3,6 +3,7 @@
 isset($_GET['source']) && highlight_file(__FILE__) && die();
 
 header('X-Frame-Options: SAMEORIGIN');
+header('Cross-Origin-Resource-Policy: same-origin');
 
 session_set_cookie_params(60, '/; samesite=Lax', $_SERVER['HTTP_HOST'], true, true);
 session_start();
