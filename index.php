@@ -74,22 +74,19 @@ if(!isset($_SESSION['id'])) {
         </div>
         
         <script>
-            function disableMenu(value) {
-                saveButton.disabled = value;
-                shareButton.disabled = value;
-                clearButton.disabled = value;
+            function updateMenu(value) {
+                const isEmpty = (textarea.value.length === 0);
+                saveButton.disabled = isEmpty;
+                shareButton.disabled = isEmpty;
+                clearButton.disabled = isEmpty;
             }
 
-            let pastContent = localStorage.getItem("html");
-            if (pastContent !== null) {
-                textarea.value = pastContent;
-                disableMenu(false);
-            }
+            textarea.value = localStorage.getItem("html");
+            updateMenu();
 
             textarea.onchange = textarea.oninput = () => {
                 const dirty = textarea.value;
-                const isEmpty = (dirty.length === 0);
-                disableMenu(isEmpty);
+                updateMenu();
                 localStorage.setItem("html", dirty);
                 const clean = DOMPurify.sanitize(dirty);
                 iframe.contentWindow.postMessage({
@@ -120,7 +117,7 @@ if(!isset($_SESSION['id'])) {
 
             function remove() {
                 textarea.value = "";
-                disableMenu(true);
+                updateMenu();
                 localStorage.removeItem("html")
             }
         </script>
