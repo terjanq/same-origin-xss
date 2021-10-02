@@ -3,7 +3,7 @@
 isset($_GET['source']) && highlight_file(__FILE__) && die();
 
 // To protect from unrelated attacks https://w3c.github.io/webappsec-post-spectre-webdev/#documents-isolated
-// Excluding Cross-Origin-Opener-Policy as that affects the expected attack.
+// Excluding Cross-Origin-Opener-Policy to be the same as the iframe.
 header('Cross-Origin-Resource-Policy: same-origin');
 header('Vary: Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site, Sec-Fetch-User');
 header('X-Content-Type-Options: nosniff');
