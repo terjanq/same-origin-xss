@@ -55,7 +55,7 @@ if(!isset($_SESSION['id'])) {
         <h1>Welcome to note creator!</h1>
         <div class="container">
             <div class="column">
-                <h2>Your HTML code <input type="file" onchange="loadFile(this.files[0])"><button id="saveButton" disabled onclick="save()">Save As</button><button id="shareButton" disabled onclick="share()">Share</button><button id="clearButton" disabled onclick="remove()">Clear</button></h2>
+                <h2>Your HTML code <input type="file" onchange="loadFile(this.files[0])"><button id="saveButton" disabled onclick="save()">Save</button><button id="shareButton" disabled onclick="share()">Share</button><button id="clearButton" disabled onclick="remove()">Clear</button></h2>
                 <textarea id="textarea"></textarea>
             </div>
             <div class="column">
