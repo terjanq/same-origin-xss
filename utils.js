@@ -7,7 +7,7 @@ popupButton.disabled = false;
 function updateMenu(value) {
   const isEmpty = (textarea.value.length === 0);
   saveButton.disabled = isEmpty;
-  shareButton.disabled = isEmpty;
+  if ('share' in navigator) shareButton.disabled = isEmpty;
   clearButton.disabled = isEmpty;
 }
 
