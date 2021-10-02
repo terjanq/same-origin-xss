@@ -121,6 +121,7 @@ if(!isset($_SESSION['id'])) {
             async function loadFile(file) {
                 let text = await file.text();
                 textarea.value = text;
+                onChange();
             }
 
             function share() {
