@@ -2,8 +2,6 @@
 
 var popupWindow = false;
 
-popupButton.disabled = false;
-
 function updateMenu(value) {
   const isEmpty = (textarea.value.length === 0);
   saveButton.disabled = isEmpty;
