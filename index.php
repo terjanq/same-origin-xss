@@ -73,35 +73,41 @@ if(!isset($_SESSION['id'])) {
         
         <script>
             var popupWindow = false;
+            var cleanHTML = "";
+
             function updateMenu(value) {
                 const isEmpty = (textarea.value.length === 0);
                 saveButton.disabled = isEmpty;
                 shareButton.disabled = isEmpty;
                 clearButton.disabled = isEmpty;
             }
-
-            textarea.value = localStorage.getItem("html");
-            updateMenu();
-
-            textarea.onchange = textarea.oninput = () => {
+			
+            function onChange() {
                 const dirty = textarea.value;
                 updateMenu();
                 localStorage.setItem("html", dirty);
-                const clean = DOMPurify.sanitize(dirty);
+                cleanHTML = DOMPurify.sanitize(dirty);
                 if (popupWindow && popupWindow.closed === false) {
-		    try {
-                    	popupWindow.document.body.innerHTML = clean;
-		    } catch (e) {
-                    	popupWindow = false;
-		    }
+                    try {
+                        updateWindow();
+                    } catch (e) {
+                        popupWindow = false;
+                    }
                 }
                 iframe.contentWindow.postMessage({
                     identifier,
                     type: 'render',
-                    body: clean,
+                    body: cleanHTML,
                 }, window.origin);
+			}
+			
+            textarea.onchange = textarea.oninput = () => {
+                onChange();
             }
-            
+			
+            textarea.value = localStorage.getItem("html");
+            onChange();
+			
             function save() {
                 const a = document.createElement('a');
                 const file = new Blob([textarea.value]);
@@ -123,13 +129,23 @@ if(!isset($_SESSION['id'])) {
 
             function remove() {
                 textarea.value = "";
-                updateMenu();
+                onChange();
                 localStorage.removeItem("html")
             }
+			
             function popup() {
                 popupWindow = open("","","width=0,height=0");
                 popupWindow.document.title = "Notes";
-                popupWindow.document.body.innerHTML = "<h1>Waiting for changes</h1>";
+				updateWindow();
+            }
+            
+            function updateWindow() {
+                const isEmpty = (cleanHTML.length === 0);
+                if (isEmpty) {
+                    popupWindow.document.body.innerHTML = "<h1>Waiting for changes</h1>";
+                } else {
+                    popupWindow.document.body.innerHTML = cleanHTML;
+                }
             }
         </script>
     </body>
