@@ -135,13 +135,13 @@ if(!isset($_SESSION['id'])) {
 			
             function popup() {
                 popupWindow = open("","","width=0,height=0");
-                popupWindow.document.title = "Notes";
                 updateWindow();
             }
             
             function updateWindow() {
                 const isEmpty = (cleanHTML.length === 0);
                 if (isEmpty) {
+                    popupWindow.document.title = "Notes";
                     popupWindow.document.body.innerHTML = "<h1>Waiting for changes</h1>";
                 } else {
                     popupWindow.document.body.innerHTML = cleanHTML;
