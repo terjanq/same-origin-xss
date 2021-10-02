@@ -120,6 +120,7 @@ if(!isset($_SESSION['id'])) {
             function remove() {
                 textarea.value = "";
                 disableMenu(true);
+                localStorage.removeItem("html")
             }
         </script>
     </body>
