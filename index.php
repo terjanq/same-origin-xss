@@ -86,7 +86,7 @@ if(!isset($_SESSION['id'])) {
 			
             textarea.onchange = textarea.oninput = () => {
                 onChange();
-		if (window.hasOwnProperty("addon")) {
+		if (window.hasOwnProperty("unrelated")) {
 		    updateMenu();
 		    unrelatedPopup();
 		}
