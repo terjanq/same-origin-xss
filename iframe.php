@@ -17,16 +17,16 @@ if(!isset($_SESSION['id'])) {
 ?>
 <html>
     <head>
-        <script>
-            const identifier = '<?=$identifier;?>';
-            onmessage = e => {
-                const data = e.data; 
-                if(e.origin !== window.origin && data.identifier !== identifier) return;
-                if(data.type === 'render'){
-                    renderContainer.innerHTML = data.body;
-                }
-            }
-         </script>
+<script>
+const identifier = '<?=$identifier;?>';
+onmessage = e => {
+  const data = e.data;
+  if(e.origin !== window.origin && data.identifier !== identifier) return;
+  if(data.type === 'render'){
+    renderContainer.innerHTML = data.body;
+  }
+}
+</script>
     </head>
     <body>
             <div id="renderContainer"></div>
