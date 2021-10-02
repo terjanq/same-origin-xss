@@ -4,7 +4,7 @@ isset($_GET['source']) && highlight_file(__FILE__) && die();
 
 // To protect from unrelated attacks https://w3c.github.io/webappsec-post-spectre-webdev/#documents-isolated
 // Excluding Cross-Origin-Opener-Policy to be the same as the iframe.
-// No Cross-Origin-Embedder-Policy because iframe may need to display content that has not opted in, No CSP to allow for XSS.
+// No Cross-Origin-Embedder-Policy because iframe may need to display content that has not opted in.
 header('Cross-Origin-Resource-Policy: same-origin');
 header('Vary: Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site, Sec-Fetch-User');
 header('X-Content-Type-Options: nosniff');
@@ -15,6 +15,10 @@ header('X-Frame-Options: DENY');
 header('Feature-Policy: document-domain "none"');
 
 header('Referrer-Policy: no-referrer');
+
+// Basic CSP that allows for XSS.
+header('Content-Security-Policy: object-src none; base-uri none;');
+
 
 session_set_cookie_params(60, '/; samesite=Lax', $_SERVER['HTTP_HOST'], true, true);
 session_start();
