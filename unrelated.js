@@ -59,5 +59,10 @@ function unrelatedPopup() {
   }
 }
 
+function unrelatedUpdate() {
+  updateMenu();
+  unrelatedPopup();
+}
+
 textarea.value = localStorage.getItem("html");
 onChange();
