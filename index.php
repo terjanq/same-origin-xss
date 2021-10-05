@@ -33,6 +33,14 @@ if (!isset($_SESSION['id'])) {
     <p>
         Can you take up on the challenge and pop out an <code>alert(document.domain)</code> on <code>so-xss.terjanq.me</code> origin? 
     </p>
+    <h2>
+        <ul>
+            <li>Use latest stable version of Chrome or latest stable version of Firefox</li>
+            <li>Can't use any other domain from terjanq.me or its subdomains</li>
+            <li>No Self-XSS</li>
+            <li>Reports must use the RSA</li>
+        </ul>
+    </h2>
     <div class="container">
         <div class="column">
             <div class="row header">
