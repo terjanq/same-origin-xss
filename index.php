@@ -37,7 +37,6 @@ if (!isset($_SESSION['id'])) {
     <h2>
         <ul>
             <li>Use latest stable version of Chrome or latest stable version of Firefox</li>
-            <li>Can't use terjanq.me or its subdomains except the challenge origin</li>
             <li>No Self-XSS</li>
             <li>Reports must use the RSA</li>
         </ul>
