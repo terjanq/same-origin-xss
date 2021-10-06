@@ -5,7 +5,8 @@ isset($_GET['source']) && highlight_file(__FILE__) && die();
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
 
-session_set_cookie_params(60, '/; samesite=Lax', $_SERVER['HTTP_HOST'], true, true);
+session_name('__Host-XSS');
+session_set_cookie_params(60, '/; samesite=Lax', "", true, true);
 session_start();
 
 if (!isset($_SESSION['id'])) {
