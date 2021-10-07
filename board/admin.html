@@ -1,0 +1,19 @@
+<label for="token">Token:</label>
+<input type="password" id="token" name="token">
+
+<textarea id="data"></textarea>
+<button onclick="Save()">Save</button>
+
+<script>
+async function updateContent() {
+  let result = await fetch("api.php", {mode: "no-cors"});
+  data.value = await result.text();
+}
+
+function save() {
+  fetch("api.php?token="+encodeURIComponent(token.value)+"&content="+encodeURIComponent(data.value), {mode: "no-cors"});
+}
+  
+updateContent();
+setInterval(updateContent, 5000);
+</script>
