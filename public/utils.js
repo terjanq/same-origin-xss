@@ -82,7 +82,7 @@ async function updateLeaderboard() {
     
     let a = document.createElement("a");
     a.innerText = p.name;
-    if (p.handle) a.href = "https://twitter.com/"+encodeURI(player.handle);
+    if (p.handle) a.href = "https://twitter.com/"+encodeURICompontent(player.handle);
     
     board.appendChild(player);
   }
