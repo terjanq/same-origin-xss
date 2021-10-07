@@ -67,13 +67,14 @@ window.addEventListener('load', () => {
   setInterval(updateLeaderboard, 5000);
 });
 
-var leaderboardData = {};
+var leaderboardData = "";
 
 async function updateLeaderboard() {
   let data = await fetch("https://so-xss-hof.terjanq.me/hof.json?"+Math.random()).then(e=>e.json());
+  let text = JSON.stringify(data);
   
-  if (leaderboardData === data) return
-  leaderboardData = data;
+  if (leaderboardData === text) return
+  leaderboardData = text;
   
   const hof = document.getElementById('hof');
   hof.textContent = '';
