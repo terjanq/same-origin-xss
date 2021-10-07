@@ -7,7 +7,7 @@
 <script>
 async function updateContent() {
   let result = await fetch("api.php", {mode: "no-cors"});
-  data.value = await result.text();;
+  data.value = await result.text();
 }
 
 function save() {
