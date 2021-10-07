@@ -65,25 +65,13 @@ window.addEventListener('load', () => {
   onChange();
   updateLeaderboard();
   setInterval(updateLeaderboard, 5000);
-<<<<<<< Updated upstream
-})
-
-async function updateLeaderboard() {
-  let result = fetch("https://so-xss-hof.terjanq.me/hof.json");
-  let data = await result.json();
-  let board = document.createElement("ul");
-  board.className = "hof";
-  for (let p in data) {
-=======
 });
 
 async function updateLeaderboard() {
   let data = await fetch("https://so-xss-hof.terjanq.me/hof.json?"+Math.random()).then(e=>e.json());
-  console.log(data);
   const hof = document.getElementById('hof');
   hof.textContent = '';
   for (let p of data) {
->>>>>>> Stashed changes
     let player = document.createElement("li");
     
     let a = document.createElement("a");
