@@ -83,9 +83,7 @@ if (!isset($_SESSION['id'])) {
                 <h2>Hall of Fame</h2>
             </div>
             <div class="row content">
-                <ul class="hof">
-                    <?=$hof;?>
-                </ul>
+                <ul class="hof" id="hof"></ul>
             </div>
         </div>
     </div>
