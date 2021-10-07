@@ -64,7 +64,7 @@ window.addEventListener('load', () => {
   textarea.value = localStorage.getItem("html");
   onChange();
   updateLeaderboard();
-  setInterval(leaderboard, 5000);
+  setInterval(updateLeaderboard, 5000);
 })
 
 async function updateLeaderboard() {
