@@ -63,4 +63,26 @@ function updateContents() {
 window.addEventListener('load', () => {
   textarea.value = localStorage.getItem("html");
   onChange();
+  updateLeaderboard();
+  setInterval(leaderboard, 5000);
 })
+
+async function updateLeaderboard() {
+  let result = fetch("https://so-xss-hof.terjanq.me/hof.json", {mode: "no-cors"});
+  let data = await result.json();
+  let board = document.createElement("ul");
+  board.className = "hof";
+  for (let p in data) {
+    let player = document.createElement("li");
+    let comment = document.createElement("span");
+    comment.className = "comment";
+    comment.innerText = player.comment;
+    
+    let a = document.createElement("a");
+    if (p.handle) a.href = "https://twitter.com/"+encodeURI(player.handle);
+    player.innerText = p.comment;
+    
+    board.appendChild(player);
+  }
+  hof.replaceChild(board);
+}
