@@ -1,6 +1,4 @@
 <?php
-include "../private/hof.php";
-
 isset($_GET['source']) && highlight_file(__FILE__) && die();
 
 header('X-Content-Type-Options: nosniff');
