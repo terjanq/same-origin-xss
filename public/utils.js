@@ -68,7 +68,7 @@ window.addEventListener('load', () => {
 })
 
 async function updateLeaderboard() {
-  let result = fetch("https://so-xss-hof.terjanq.me/hof.json", {mode: "no-cors"});
+  let result = fetch("https://so-xss-hof.terjanq.me/hof.json");
   let data = await result.json();
   let board = document.createElement("ul");
   board.className = "hof";
