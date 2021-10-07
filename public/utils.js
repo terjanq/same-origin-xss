@@ -77,7 +77,7 @@ async function updateLeaderboard() {
     
     let comment = document.createElement("span");
     comment.className = "comment";
-    comment.innerText = player.comment;
+    comment.innerText = p.comment;
     player.appendChild(comment);
     
     let a = document.createElement("a");
