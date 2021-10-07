@@ -1,6 +1,6 @@
 <?php
 $secret = '';
-if (isset($_GET['secret']) && password_verify($_GET['secret'], $secret)) die();
+if (isset($_GET['secret']) && !password_verify($_GET['secret'], $secret)) die();
 
 header("Access-Control-Allow-Origin", "*");
 header('X-Content-Type-Options: nosniff');
