@@ -78,10 +78,11 @@ async function updateLeaderboard() {
     let comment = document.createElement("span");
     comment.className = "comment";
     comment.innerText = player.comment;
+    player.appendChild(comment);
     
     let a = document.createElement("a");
+    a.innerText = p.name;
     if (p.handle) a.href = "https://twitter.com/"+encodeURI(player.handle);
-    player.appendChild(comment);
     
     board.appendChild(player);
   }
