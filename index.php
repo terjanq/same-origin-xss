@@ -31,17 +31,11 @@ if (!isset($_SESSION['id'])) {
 
 <body>
     <h1>It's time for some soXSS!</h1>
+    <span class="subtitle">Delivered by <a href="https://twitter.com/terjanq">terjanq</a> & <a href="https://twitter.com/ndevtk">NDevTK</a></span>
     <p>
-        Can you take up on the challenge and pop out an <code>alert(document.domain)</code> on <code>so-xss.terjanq.me</code> origin? 
+        Can you take up on the challenge and pop out an <code>alert()</code> on <code>so-xss.terjanq.me</code> origin? 
     </p>
-    <h2>
-        <ul>
-            <li>Use latest stable version of Chrome or latest stable version of Firefox</li>
-            <li>Can't use terjanq.me or its subdomains except the challenge origin</li>
-            <li>No Self-XSS</li>
-            <li>Reports must use the RSA</li>
-        </ul>
-    </h2>
+
     <div class="container">
         <div class="column">
             <div class="row header">
@@ -70,6 +64,20 @@ if (!isset($_SESSION['id'])) {
             </div>
         </div>
         <div class="column">
+            <div class="row header">
+                <h2>Rules</h2>
+            </div>
+            <div class="row content rules">
+                <strong> The solution:  </strong>
+                    <ul>
+                        <li>Must work in the latest version of Chrome or Firefox.</li>
+                        <li>Can't make use of other domains from <code>*.terjanq.me</code> (including <code>terjanq.me</code>).</li>
+                        <li>Can't be a self-XSS.</li>
+                        <li>Must be submitted in a private message to <a href="https://twitter.com/terjanq">terjanq</a> or <a href="https://twitter.com/ndevtk">NDevTK</a>.</li>
+                        <li>Must display contents of admin's file, i.e. <code>alert(_RAW_HTML_CONTENTS_)</code>.</li>
+                    </ul>
+               
+            </div>
             <div class="row header">
                 <h2>Hall of Fame</h2>
             </div>
