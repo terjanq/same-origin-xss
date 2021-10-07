@@ -96,12 +96,39 @@ flex: 1 1 auto;
   border-radius: 2px;
 }
 
+@counter-style medals{
+  system: fixed;
+  symbols: "\01F947" "\01F948" "\01F949" ;
+  suffix: " ";
+  fallback: medal;
+}
+
+@counter-style medal{
+  system: cyclic;
+  symbols: "\01F3C5" ;
+  suffix: " ";
+}
+
 
 .hof{
-  list-style-type: '\01F3C5'; 
+  list-style-type: medals;
+  font-size: 20px;
+}
+
+.hof .comment{
+  opacity: 80%;
+  margin-left: 5px;
+}
+.hof .comment::before{
+  content: '(';
+}
+
+.hof .comment::after{
+  content: ')';
 }
 
 .hof li{
   padding-left: 3px;
   font-weight: 700;
+  margin-top: 3px;
 }

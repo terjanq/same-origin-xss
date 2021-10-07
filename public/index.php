@@ -1,4 +1,5 @@
 <?php
+include "../private/hof.php";
 
 isset($_GET['source']) && highlight_file(__FILE__) && die();
 
@@ -83,9 +84,7 @@ if (!isset($_SESSION['id'])) {
             </div>
             <div class="row content">
                 <ul class="hof">
-                    <li>
-                        You?
-                    </li>
+                    <?=$hof;?>
                 </ul>
             </div>
         </div>
