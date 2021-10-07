@@ -1,17 +1,7 @@
 [
    {
-      "name":"Test 1",
-      "handle":"Test",
-      "comment":"Test"
-   },
-   {
-      "name":"Test 2",
-      "handle":"Test",
-      "comment":"Test"
-   },
-   {
-      "name":"Test 3",
-      "handle":"Test",
-      "comment":"Test"
+      "name":"You?",
+      "handle":"",
+      "comment":""
    }
 ]
