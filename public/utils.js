@@ -65,6 +65,7 @@ window.addEventListener('load', () => {
   onChange();
   updateLeaderboard();
   setInterval(updateLeaderboard, 5000);
+<<<<<<< Updated upstream
 })
 
 async function updateLeaderboard() {
@@ -73,18 +74,30 @@ async function updateLeaderboard() {
   let board = document.createElement("ul");
   board.className = "hof";
   for (let p in data) {
+=======
+});
+
+async function updateLeaderboard() {
+  let data = await fetch("https://so-xss-hof.terjanq.me/hof.json?"+Math.random()).then(e=>e.json());
+  console.log(data);
+  const hof = document.getElementById('hof');
+  hof.textContent = '';
+  for (let p of data) {
+>>>>>>> Stashed changes
     let player = document.createElement("li");
-    
-    let comment = document.createElement("span");
-    comment.className = "comment";
-    comment.innerText = p.comment;
-    player.appendChild(comment);
     
     let a = document.createElement("a");
     a.innerText = p.name;
-    if (p.handle) a.href = "https://twitter.com/"+encodeURICompontent(player.handle);
+    if (p.handle) a.href = "https://twitter.com/"+ encodeURIComponent(p.handle);
     
-    board.appendChild(player);
+    player.appendChild(a);
+
+    if(p.comment){
+      let comment = document.createElement("span");
+      comment.className = "comment";
+      comment.innerText = p.comment;
+      player.appendChild(comment);
+    }
+    hof.appendChild(player);
   }
-  hof.replaceChild(board);
 }

@@ -80,7 +80,7 @@ if (!isset($_SESSION['id'])) {
             <div class="row header">
                 <h2>Hall of Fame</h2>
             </div>
-            <div id="hof" class="row content"></div>
+            <div class="row content"><ul id="hof" class="hof"></ul></div>
         </div>
     </div>
     <script>
