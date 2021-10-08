@@ -21,6 +21,10 @@ if (!isset($_SESSION['id'])) {
 <head>
     <title>soXSS | XSS Challenge </title>
     <meta name="charset" content="utf8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yet another XSS challenge!">
+    <meta name="twitter:description" content="Delivered by @terjanq & @NDevTK">
+    <meta name="twitter:image" content="https://so-xss-hof.terjanq.me/soXSS.png">
     <script>
         const identifier = '<?= $identifier; ?>';
     </script>
@@ -32,7 +36,7 @@ if (!isset($_SESSION['id'])) {
     <h1>soXSS challenge</h1>
     <span class="subtitle">Delivered by <a href="https://twitter.com/terjanq">terjanq</a> & <a href="https://twitter.com/ndevtk">NDevTK</a></span>
     <p>
-        Can you take up on the challenge and pop out an <code>alert()</code> on <code>so-xss.terjanq.me</code> origin? 
+        Can you take up on the yet another challenge and pop out an <code>alert()</code> on <code>so-xss.terjanq.me</code> origin? 
     </p>
 
     <div class="container">
