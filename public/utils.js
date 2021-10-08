@@ -72,7 +72,8 @@ var time = "";
 
 async function updateLeaderboard() {
   let result = await fetch("https://so-xss-hof.terjanq.me/hof.json", {cache: "no-cache", headers: {'If-Modified-Since': time}});
-  time = result.headers.get("last-modified");
+  let header = result.headers.get("last-modified");
+  if (header) time = header;
   let data = await result.json();
   
   let text = JSON.stringify(data);
