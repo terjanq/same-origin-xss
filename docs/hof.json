@@ -3,5 +3,10 @@
       "name":"You?",
       "handle":"",
       "comment":""
+   },
+   {
+      "name":"XSS TEST<b>test</b>",
+      "handle":"XSS TEST<b>test</b>",
+      "comment":"XSS TEST<b>test</b>"
    }
 ]
