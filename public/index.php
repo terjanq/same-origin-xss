@@ -78,7 +78,7 @@ if (!isset($_SESSION['id'])) {
                         <li>Can't be a self-XSS.</li>
                         <li>Must be submitted in a private message to <a href="https://twitter.com/terjanq">terjanq</a> or <a href="https://twitter.com/ndevtk">NDevTK</a>.</li>
                         <li>Must display contents of admin's file, i.e. <code>alert(_RAW_HTML_CONTENTS_)</code>.</li>
-                        <li>Must not require heavy user interaction (2 clicks are acceptable).</li>
+                        <li>Must not require heavy user interaction (e.g. 2 clicks are acceptable).</li>
                     </ul>
 
             </div>
