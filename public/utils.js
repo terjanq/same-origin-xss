@@ -64,17 +64,13 @@ window.addEventListener('load', () => {
   textarea.value = localStorage.getItem("html");
   onChange();
   updateLeaderboard();
-  setInterval(updateLeaderboard, 5000);
+  setInterval(updateLeaderboard, 60000);
 });
 
 var leaderboardData = "";
-var time = "";
 
 async function updateLeaderboard() {
-  let result = await fetch("https://so-xss-hof.terjanq.me/hof.json", {cache: "no-cache", headers: {'If-Modified-Since': time}});
-  let header = result.headers.get("last-modified");
-  if (header) time = header;
-  let data = await result.json();
+  let data = await fetch("https://so-xss-hof.terjanq.me/hof.json?"+Math.random(), {cache: "no-cache"}).then(e=>e.json());
   
   let text = JSON.stringify(data);
   
