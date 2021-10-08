@@ -70,7 +70,7 @@ window.addEventListener('load', () => {
 var leaderboardData = "";
 
 async function updateLeaderboard() {
-  let data = await fetch("https://so-xss-hof.terjanq.me/hof.json?"+Math.random(), {cache: "no-cache"}).then(e=>e.json());
+  let data = await fetch("https://so-xss-hof.terjanq.me/hof.json?"+Math.random(), {cache: "no-store"}).then(e=>e.json());
   
   let text = JSON.stringify(data);
   
