@@ -19,7 +19,7 @@ if (!isset($_SESSION['id'])) {
 <html>
 
 <head>
-    <title>soXSS</title>
+    <title>soXSS | XSS Challenge </title>
     <meta name="charset" content="utf8">
     <script>
         const identifier = '<?= $identifier; ?>';
@@ -29,7 +29,7 @@ if (!isset($_SESSION['id'])) {
 </head>
 
 <body>
-    <h1>It's time for some soXSS!</h1>
+    <h1>soXSS challenge</h1>
     <span class="subtitle">Delivered by <a href="https://twitter.com/terjanq">terjanq</a> & <a href="https://twitter.com/ndevtk">NDevTK</a></span>
     <p>
         Can you take up on the challenge and pop out an <code>alert()</code> on <code>so-xss.terjanq.me</code> origin? 
@@ -62,7 +62,7 @@ if (!isset($_SESSION['id'])) {
                 <iframe id="iframe" src="/iframe.php"></iframe>
             </div>
         </div>
-        <div class="column">
+        <div class="column rules">
             <div class="row header">
                 <h2>Rules</h2>
             </div>
