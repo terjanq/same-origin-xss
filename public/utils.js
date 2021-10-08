@@ -71,9 +71,8 @@ var leaderboardData = "";
 var time = "";
 
 async function updateLeaderboard() {
-  let data = await fetch("https://so-xss-hof.terjanq.me/hof.json", {cache: "no-cache", headers: {'If-Modified-Since': time}});
-  if (result.status === 304) return
-  time = data.headers.get("last-modified");
+  let result = await fetch("https://so-xss-hof.terjanq.me/hof.json", {cache: "no-cache", headers: {'If-Modified-Since': time}});
+  time = result.headers.get("last-modified");
   let data = await result.json();
   
   let text = JSON.stringify(data);
