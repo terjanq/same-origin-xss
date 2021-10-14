@@ -1,8 +1,14 @@
 [
    {
-      "name":"Michał Bentkowski",
-      "handle":"SecurityMB",
-      "comment":""
+      "name": "Michał Bentkowski",
+      "handle": "SecurityMB",
+      "comment": ""
+   },
+   {
+      "name": "parrot",
+      "handle": "parrot409",
+      "comment": "l33t unintended solution",
+      "rules_abuse": true,
    },
    {
       "name": "You?"
