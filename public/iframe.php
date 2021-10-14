@@ -3,6 +3,7 @@
 isset($_GET['source']) && highlight_file(__FILE__) && die();
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
+header('Content-Security-Policy', "frame-src 'none';")
 
 session_name('__Host-PHPSESSID1');
 session_set_cookie_params(60, '/; samesite=Lax', "", true, true);
@@ -33,7 +34,7 @@ if (!isset($_SESSION['id'])) {
 </head>
 
 <body>
-  <iframe id="renderContainer" csp="frame-src 'self';"></iframe>
+  <iframe id="renderContainer"></iframe>
 </body>
 
 </html>
