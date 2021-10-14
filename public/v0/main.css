@@ -1,0 +1,138 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.subtitle{
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.70;
+  margin-top: -20px;
+  display: block;
+}
+
+a{
+  text-decoration: none;
+  color: #208dce;
+  font-weight: 800;
+}
+
+::file-selector-button, button{
+  background: #e2f4ff;
+  border: solid 1px #bcbcbc;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 3px 6px;
+  opacity: 85%;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+::file-selector-button:hover, button:hover{
+  opacity: 100%;
+  border-color: #208dcecf;
+}
+
+.container {
+  width: 90vw;
+  height: 80vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.container .column{
+  box-shadow: 0 0 25px rgb(0 0 0 / 10%);
+  background: white;
+  flex-grow: 1;
+  margin: 5px;
+  min-height: 400px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 300px;
+}
+
+.container .column.rules{
+  max-width: 580px;
+}
+
+.container .column .panel{
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+
+.container .row.header{
+  flex: 0 1 auto;
+}
+
+.container .row.content{
+flex: 1 1 auto;
+}
+
+.container .row.content.rules{
+  flex: 0 1 auto;
+  }
+.container textarea{
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background: rgba(0,0,0,0);
+  color: purple;
+  font-family: Consolas, monaco, monospace;
+  font-size: 16px;
+  border: solid 3px #f0e2ff;
+  border-radius: 2px;
+}
+.container iframe{
+  width: 100%;
+  height: 100%;
+  border: solid 3px #e6e69f;
+  border-radius: 2px;
+}
+
+@counter-style medals{
+  system: fixed;
+  symbols: "\01F947" "\01F948" "\01F949" ;
+  suffix: " ";
+  fallback: medal;
+}
+
+@counter-style medal{
+  system: cyclic;
+  symbols: "\01F3C5" ;
+  suffix: " ";
+}
+
+
+.hof{
+  list-style-type: medals;
+  font-size: 20px;
+}
+
+.hof .comment{
+  opacity: 80%;
+  margin-left: 5px;
+}
+.hof .comment::before{
+  content: '(';
+}
+
+.hof .comment::after{
+  content: ')';
+}
+
+.hof li{
+  padding-left: 3px;
+  font-weight: 700;
+  margin-top: 3px;
+}
