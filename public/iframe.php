@@ -26,14 +26,14 @@ if (!isset($_SESSION['id'])) {
       const data = e.data;
       if (e.origin !== window.origin && data.identifier !== identifier) return;
       if (data.type === 'render') {
-        renderContainer.innerHTML = data.body;
+        renderContainer.srcdoc = data.body;
       }
     }
   </script>
 </head>
 
 <body>
-  <div id="renderContainer"></div>
+  <iframe id="renderContainer" csp="frame-src 'self';"></iframe>
 </body>
 
 </html>
