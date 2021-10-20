@@ -3,9 +3,8 @@
 isset($_GET['source']) && highlight_file(__FILE__) && die();
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');
-header('Content-Security-Policy', "frame-src 'none';")
 
-session_name('__Host-PHPSESSID1');
+session_name('__Host-PHPSESSID');
 session_set_cookie_params(60, '/; samesite=Lax', "", true, true);
 session_start();
 
@@ -27,14 +26,14 @@ if (!isset($_SESSION['id'])) {
       const data = e.data;
       if (e.origin !== window.origin && data.identifier !== identifier) return;
       if (data.type === 'render') {
-        renderContainer.srcdoc = data.body;
+        renderContainer.innerHTML = data.body;
       }
     }
   </script>
 </head>
 
 <body>
-  <iframe id="renderContainer"></iframe>
+  <div id="renderContainer"></div>
 </body>
 
 </html>
