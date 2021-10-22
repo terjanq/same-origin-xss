@@ -94,8 +94,7 @@ if (!isset($_SESSION['id'])) {
         function onChange() {
             const dirty = textarea.value;
             localStorage.setItem("html", dirty);
-            cleanHTML = DOMPurify.sanitize(dirty,
-                {
+            cleanHTML = DOMPurify.sanitize(dirty, {
                     FORBID_TAGS: ['style','svg','math']
                 });
             iframe.contentWindow.postMessage({
