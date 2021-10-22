@@ -3,8 +3,9 @@ isset($_GET['source']) && highlight_file(__FILE__) && die();
 
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
+header("Content-Security-Policy: frame-src 'self'");
 
-session_name('__Host-PHPSESSID2');
+session_name('__Host-PHPSESSID');
 session_set_cookie_params(60, '/; samesite=Lax', "", true, true);
 session_start();
 
