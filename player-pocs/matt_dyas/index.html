@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <iframe
+      srcdoc="<script src='script.js'></script>"
+      sandbox="allow-scripts allow-popups allow-modals"
+    ></iframe>
+    <script>
+      onmessage = (e) => {
+        console.log(e.data.identifier);
+        render(e.data.identifier, "alert(localStorage.getItem('html'))");
+      };
+    </script>
+    <script src='script.js'></script>
+  </body>
+</html>
