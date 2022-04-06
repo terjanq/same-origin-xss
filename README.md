@@ -23,7 +23,7 @@ onmessage = e => {
 }
 ```
 2. Steal the identifier.
-3. Steal the saved note from the main page with a correct idenntifier.
+3. Steal the saved note from the main page with a valid identifier.
 
 *💡 The name of the challenge - soXSS - was referring to Same-Origin XSS.*
 
