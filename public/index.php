@@ -3,7 +3,7 @@ isset($_GET['source']) && highlight_file(__FILE__) && die();
 
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
-
+header("Content-Security-Policy: frame-src 'self'");
 session_name('__Host-PHPSESSID');
 session_set_cookie_params(60, '/; samesite=Lax', "", true, true);
 session_start();
@@ -79,6 +79,7 @@ if (!isset($_SESSION['id'])) {
                         <li>Must be submitted in a private message to <a href="https://twitter.com/terjanq">terjanq</a> or <a href="https://twitter.com/ndevtk">NDevTK</a>.</li>
                         <li>Must display contents of admin's file, i.e. <code>alert(_RAW_HTML_CONTENTS_)</code>.</li>
                         <li>Must not require heavy user interaction (e.g. 2 clicks are acceptable).</li>
+                        <li><i>The challenge was <a href="https://gist.github.com/terjanq/e32ff3cd8f29df6105a6a97dbbaca4e6">fixed</a> on 10/22/2021 4pm CEST</i></li>
                     </ul>
 
             </div>
@@ -94,7 +95,9 @@ if (!isset($_SESSION['id'])) {
         function onChange() {
             const dirty = textarea.value;
             localStorage.setItem("html", dirty);
-            cleanHTML = DOMPurify.sanitize(dirty);
+            cleanHTML = DOMPurify.sanitize(dirty, {
+                    FORBID_TAGS: ['style','svg','math']
+                });
             iframe.contentWindow.postMessage({
                 identifier,
                 type: 'render',
