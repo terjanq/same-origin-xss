@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The challenge consisted of two components:
+The [challenge](https://twitter.com/terjanq/status/1446500485142355972) consisted of two components:
 1. Text input for HTML notes.
 2. Rendered HTML page from textarea, rendered inside an iframe.
 
@@ -63,4 +63,4 @@ All the steps are included in the below simple [PoC](https://so-xss-hof.terjanq.
 ```
 
 ## Credits
-The challenge was created by [NDevTK](https://twitter.com/ndevtk) and [terjanq](https://twitter.com/terjanq)
+The challenge was created by [NDevTK](https://twitter.com/ndevtk) and [terjanq](https://twitter.com/terjanq).
